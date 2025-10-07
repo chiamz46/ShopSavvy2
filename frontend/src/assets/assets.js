@@ -3,6 +3,7 @@ import eye_slash from './eye_slash.png';
 import ramen from './ramen.png';
 import eye from './eye.png';
 import logo from './logo.png'
+import logo1 from './logo1.png'
 import header_img from './header_img.png'
 import search_icon from './search_icon.png'
 import menu_1 from './menu_1.png'
@@ -68,6 +69,7 @@ import un_checked from './un_checked.png'
 export const assets = {
     ramen,
     logo,
+    logo1,
     eye_slash,
     eye,
     basket_icon,

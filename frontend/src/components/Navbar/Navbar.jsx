@@ -102,11 +102,10 @@ const Navbar = ({ setShowLogin }) => {
 
     return (
         <div className='navbar'>
-            <Link to='/'><img className='logo' src={assets.logo} alt="" /></Link>
+            <Link to='/'><img className='logo' src={assets.logo1} alt="" /></Link>
             <ul className="navbar-menu">
                 <Link to="/" onClick={() => setMenu("home")} className={location.pathname === '/' && location.hash === '' ? "active" : ""}>home</Link>
                 <a onClick={handleMenuClick} className={location.hash === '#explore-menu' ? "active" : ""}>menu</a>
-                <a onClick={handleAppDownloadClick} className={location.hash === '#app-download' ? "active" : ""}>mobile-app</a>
                 <a href="#footer" onClick={() => setMenu("contact us")} className={location.hash === '#footer' ? "active" : ""}>contact us</a>
             </ul>
             <div className="navbar-right">

@@ -100,7 +100,7 @@ import axios from "axios";
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
-    const url = "http://localhost:4000"
+    const url = "https://idx-shop-savvy-92055922-394185122079.us-central1.run.app"
     const [food_list, setFoodList] = useState([]);
     const [cartItems, setCartItems] = useState({});
     const [token, setToken] = useState(localStorage.getItem("token") || "");

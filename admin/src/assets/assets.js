@@ -5,7 +5,7 @@ import profile_image from './profile_image.png'
 import upload_area from './upload_area.png'
 import parcel_icon from './parcel_icon.png'
 
-export const url = 'http://localhost:4000'
+export const url = 'https://idx-shop-savvy-92055922-394185122079.us-central1.run.app'
 export const currency = '$'
 
 export const assets ={
