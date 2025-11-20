@@ -24,7 +24,7 @@ const PlaceOrder = () => {
     const { getTotalCartAmount, token, food_list, cartItems, url, setCartItems,currency,deliveryCharge } = useContext(StoreContext);
 
     const navigate = useNavigate();
-
+    console.log(food_list)
     const onChangeHandler = (event) => {
         const name = event.target.name
         const value = event.target.value
@@ -39,6 +39,7 @@ const PlaceOrder = () => {
                 let itemInfo = item;
                 itemInfo["quantity"] = cartItems[item._id];
                 orderItems.push(itemInfo)
+                console.log("Food item: ", item)
             }
         }))
         let orderData = {

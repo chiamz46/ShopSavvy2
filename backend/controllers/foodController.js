@@ -1,30 +1,42 @@
 import foodModel from "../models/foodModel.js";
-import fs from 'fs'
+import fs from 'fs';
 
-// all food list
-const listFood = async (req, res) => {
+// Public endpoint to list all food items
+const listAllFood = async (req, res) => {
     try {
-        const foods = await foodModel.find({})
-        res.json({ success: true, data: foods })
+        const foods = await foodModel.find({});
+        res.json({ success: true, data: foods });
     } catch (error) {
         console.log(error);
-        res.json({ success: false, message: "Error" })
+        res.json({ success: false, message: "Error" });
     }
+};
 
-}
+// Admin endpoint to list food items for the logged-in admin
+const listAdminFood = async (req, res) => {
+    try {
+        const foods = await foodModel.find({ adminId: req.body.userId });
+        console.log("Admin ID", req.body.userId)
+        res.json({ success: true, data: foods });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Error" });
+    }
+};
 
 // add food
 const addFood = async (req, res) => {
 
     try {
         let image_filename = `${req.file.filename}`
-
+        console.log("Admin", req.body.userId)
         const food = new foodModel({
             name: req.body.name,
             description: req.body.description,
             price: req.body.price,
             category:req.body.category,
             image: image_filename,
+            adminId: req.body.userId
         })
 
         await food.save();
@@ -51,31 +63,5 @@ const removeFood = async (req, res) => {
     }
 
 }
-// const searchFood = async (req, res) => {
-//     try {
-//         const { query } = req.query;
-        
-//         if (!query) {
-//             return res.json({ success: false, message: "Search query is required" });
-//         }
 
-//         const searchRegex = new RegExp(query, 'i');
-        
-//         const foods = await foodModel.find({
-//             $or: [
-//                 { name: searchRegex },
-//                 { description: searchRegex },
-//                 { category: searchRegex }
-//             ]
-//         });
-        
-//         res.json({ success: true, data: foods });
-//     } catch (error) {
-//         console.error('Search error:', error);
-//         res.json({ success: false, message: "Error searching foods" });
-//     }
-// };
-
-
-
-export { listFood, addFood, removeFood}
+export { listAllFood, listAdminFood, addFood, removeFood };

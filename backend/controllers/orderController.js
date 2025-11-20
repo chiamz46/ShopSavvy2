@@ -17,6 +17,7 @@ const placeOrder = async (req, res) => {
             items: req.body.items,
             amount: req.body.amount,
             address: req.body.address,
+            adminId: req.body.adminId
         })
         await newOrder.save();
         await userModel.findByIdAndUpdate(req.body.userId, { cartData: {} });
@@ -68,6 +69,7 @@ const placeOrderCod = async (req, res) => {
             amount: req.body.amount,
             address: req.body.address,
             payment: true,
+            adminId: req.body.adminId
         })
         await newOrder.save();
         await userModel.findByIdAndUpdate(req.body.userId, { cartData: {} });
@@ -83,7 +85,11 @@ const placeOrderCod = async (req, res) => {
 // Listing Order for Admin panel
 const listOrders = async (req, res) => {
     try {
-        const orders = await orderModel.find({});
+        const user = await userModel.findById(req.body.userId);
+        if (user.role !== "admin") {
+            return res.json({ success: false, message: "Not Authorized" });
+        }
+        const orders = await orderModel.find({ adminId: req.body.userId });
         res.json({ success: true, data: orders })
     } catch (error) {
         console.log(error);

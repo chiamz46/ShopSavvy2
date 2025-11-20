@@ -7,6 +7,7 @@ const authMiddleware = async (req, res, next) => {
     }
     try {
         const token_decode =  jwt.verify(token, process.env.JWT_SECRET);
+        console.log("Admin Start: ",token_decode)
         req.body.userId = token_decode.id;
         next();
     } catch (error) {

@@ -7,7 +7,7 @@ const Footer = () => {
     <div className='footer' id='footer'>
       <div className="footer-content">
         <div className="footer-content-left">
-            <img src={assets.logo} alt="" />
+            <img src={assets.logo1} alt="" />
             <p>Bringing flavors to your doorstep, one meal at a time. At Gourmet Express Online Food Delivery Platform, we are dedicated to connecting you with your favorite local restaurants and hidden gems, making delicious food just a click away. Order now and enjoy the finest meals, wherever you are!</p>
             <div className="footer-social-icons">
                 <img src={assets.facebook_icon} alt="" />
@@ -29,7 +29,7 @@ const Footer = () => {
             <ul>
                 <li>+1-629-278-2643</li>
                 <li>+1-602-810-3723</li>
-                <li>somtochukwunwanno@gmail.com</li>
+                <li></li>
             </ul>
         </div>
       </div>
